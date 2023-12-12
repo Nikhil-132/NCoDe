@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body>button{
+            padding:8px 15px;
+            border-radius:25px;
+            position:absolute;
+            top:50%;
+            left:48%;
+        }
+        .main{
+            background-color:cornflowerblue;
+            height: auto;
+            width: 100vw;
+display: flex;
+justify-content: space-evenly;
+align-items: center;
+flex-wrap: wrap;
+        }
+        
+        .card{
+            background-color:white;
+            border: 2px solid transparent;
+            box-shadow: 0  0 8px 5px wheat;
+            width: 25%;
+            padding: 15px;
+            text-align: center;
+            margin: 15px;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="hideButton(this)">GET DATA</button>
+
+    <div class="main"></div>
+
+    <script>
+
+let main = document.querySelector('.main')
+let btn = document.querySelector('button')
+
+btn.addEventListener('click',one)
+
+function hideButton(x){
+x.style.display='none';}
+
+function one() {
+
+    let xhr = new XMLHttpRequest()
+xhr.open('GET','https://fakestoreapi.com/products')
+
+xhr.onprogress=function(){
+    console.log('Loading...');
+}
+
+xhr.onload=function(){
+// console.log(this.responseText);
+let data = JSON.parse(this.responseText)
+console.log(data);
+
+data.forEach((ele,index)=>{
+    let myprice = Math.round(ele.price -  ele.price*0.30)
+let myhtml = `
+<div class="card">
+    <img height="150" width="150" src=${ele.image} alt="">
+    <p>${ele.description}</p>
+    <h2>
+        <del>${ele.price}</del>
+<strong>${myprice}</strong>
+</h2>
+    <button>BUY NOW</button>
+</div>
+`
+main.insertAdjacentHTML('beforeend',myhtml)
+})
+
+}
+
+xhr.send()
+
+}
+
+    </script>
+
+
+
+</body>
+</html>

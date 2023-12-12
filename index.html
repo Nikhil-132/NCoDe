@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+         
+        }
+        body{
+            background-color: papayawhip;
+            box-sizing: border-box;
+            overflow: hidden;
+
+        }
+        .container,.form-box{
+            /* border: 2px solid red; */
+            width: 100%;
+        }
+        .form-box{
+            max-width: 350px;
+            margin: 20px auto;
+            border-radius: 10px;
+            min-height: 250px;
+            padding: 30px;
+            background-color: whitesmoke;
+        }
+        .form-box .input-field{
+            /* border: 2px solid blue; */
+            margin-bottom: 50px;
+            position: relative;
+        }
+        .form-box input{
+            display: block;
+            min-height: 25px;
+            font-size: 15px;
+            padding: 10px;
+            width: 95%;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+        }
+        .form-box input[type='text']{
+            padding-right: 25px;
+        }
+        .form-box h2{
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 45px;
+        }
+        .form-box label{
+            font-size: 20px;
+            color:blue;
+            cursor: pointer;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+        .form-box input[type='submit']{
+            background-color: #1a9ae2;
+            cursor: pointer;
+            color: white;
+            font-weight: 900;
+        }
+        /* ********* */
+        .form-box .fa {
+            position: absolute;
+            right: 0px;
+            bottom: 10px;
+            font-size: 25px;
+        }
+        .form-box .input-field.error input{
+            border:3px solid red;
+        }
+        .form-box .input-field.success input{
+            border:3px solid greenyellow;
+        }
+        .form-box .input-field.error .fa{
+            color: red;
+        }
+        .form-box .input-field.success .fa{
+            color: greenyellow;
+        }
+        .input-field span{
+            display: none;
+        }
+        .input-field.error span{
+            color: red;
+            display: block;
+        }
+        .input-field.success span{
+            color: greenyellow;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <form >
+
+<div class="form-box">
+    <h2>Fill Your Details</h2>
+    <div class="input-field ">
+        <label for="">Username</label>
+        <input type="text" name="" id="username" placeholder="username">
+        <i class="fa "></i>
+        <!-- <i class="fa-regular fa-square-check"></i> -->
+        <span></span>
+    </div>
+    <div class="input-field ">
+        <label for="">Email</label>
+        <input type="text" name="" id="email" placeholder="Enter your Email">
+        <i class="fa "></i>
+        <span></span>
+    </div>
+    <div class="input-field">
+        <label for="">Password</label>
+        <input type="text" name="" id="pass1" placeholder="password">
+        <i class="fa "></i>
+        <span></span>
+    </div>
+    <div class="input-field">
+        <label for="">Confirm Password</label>
+        <input type="text" name="" id="pass2" placeholder="Confirm Password">
+        <i class="fa "></i>
+        <span></span>
+    </div>
+    <input type="submit" value="REGISTER" id="submit">
+</div>
+
+    </form>
+
+</div>
+
+<script>
+
+document.getElementById('submit').addEventListener('click', function(e){
+    e.preventDefault()
+    // console.log('REGISTTERED');
+    checkData()
+})
+
+let username = document.getElementById('username')
+// let username = document.getElementById('email')
+// let username = document.getElementById('pass1')
+// let username = document.getElementById('pass2')
+
+function checkData(){
+
+let usernameData = username.value.trim()
+
+if(usernameData==''){
+    setError(username,' Username is Blank')
+}else{
+    setSuccess(username)
+}
+
+}
+
+function setError(u,msg){
+console.log(u);
+console.log(msg);
+}
+
+// let c =  '  '
+// console.log(c);
+// console.log(c.length);
+// let d = c.trim() ;
+// console.log(d);
+// console.log(d.length);
+
+</script>
+    
+</body>
+</html>
